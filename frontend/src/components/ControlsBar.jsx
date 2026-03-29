@@ -9,6 +9,7 @@ function ControlsBar({
   canProcess,
   loading,
   resultUrl,
+  onNewImage,
 }) {
   return (
     <div className="flex items-center justify-between mt-5">
@@ -29,6 +30,15 @@ function ControlsBar({
         <p className="text-[10px] tracking-wider uppercase text-white/30 max-w-[280px] leading-relaxed hidden sm:block">
           Secured with Lens-Pro end-to-end encryption. No data leaves browser.
         </p>
+
+        {resultUrl && (
+          <button
+            onClick={onNewImage}
+            className="px-5 py-2.5 border border-white/20 text-white text-xs font-bold tracking-widest uppercase hover:bg-white/10 transition-colors"
+          >
+            New Image
+          </button>
+        )}
 
         {resultUrl && (
           <a

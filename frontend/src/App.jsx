@@ -96,6 +96,10 @@ function App() {
           canProcess={!!selectedFile}
           loading={loading}
           resultUrl={resultUrl}
+          onNewImage={() => {
+            handleReset();
+            fileInputRef.current?.click();
+          }}
         />
       </main>
 

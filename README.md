@@ -114,10 +114,10 @@ The included test image (`samples/test-image.jpg`) contains both pedestrians and
 
 ```
 Browser (React)                     Server (FastAPI)
-┌──────────────┐   POST /anonymize   ┌──────────────────────────┐
+┌──────────────┐   POST /anonymize    ┌──────────────────────────┐
 │ Upload Image ├────── FormData ─────►│ Decode bytes → cv2 mat   │
 │              │                      │ YOLOv8n inference        │
-│ Display      │◄── JPEG stream ─────┤ Gaussian blur on ROIs    │
+│ Display      │◄── JPEG stream ──────┤ Gaussian blur on ROIs    │
 │ Result       │                      │ Encode → JPEG bytes      │
 └──────────────┘                      └──────────────────────────┘
 ```
