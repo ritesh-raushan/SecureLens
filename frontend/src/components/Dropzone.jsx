@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Dropzone({ preview, onBrowse, onFileDrop }) {
+function Dropzone({ preview, resultUrl, loading, onBrowse, onFileDrop }) {
   const [dragActive, setDragActive] = useState(false);
 
   const handleDrop = (e) => {
@@ -19,12 +19,47 @@ function Dropzone({ preview, onBrowse, onFileDrop }) {
 
   if (preview) {
     return (
-      <div className="flex-1 flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] overflow-hidden">
-        <img
-          src={preview}
-          alt="Preview"
-          className="max-h-[60vh] max-w-full object-contain"
-        />
+      <div className="flex-1 flex gap-4 min-h-0">
+        {/* Original */}
+        <div className="flex-1 flex flex-col rounded-lg border border-white/10 bg-white/[0.02] overflow-hidden">
+          <span className="text-[10px] tracking-widest uppercase text-white/30 px-4 py-2">
+            Original
+          </span>
+          <div className="flex-1 flex items-center justify-center p-2">
+            <img
+              src={preview}
+              alt="Original"
+              className="max-h-[55vh] max-w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Result */}
+        <div className="flex-1 flex flex-col rounded-lg border border-white/10 bg-white/[0.02] overflow-hidden">
+          <span className="text-[10px] tracking-widest uppercase text-white/30 px-4 py-2">
+            Anonymized
+          </span>
+          <div className="flex-1 flex items-center justify-center p-2">
+            {loading ? (
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                <span className="text-xs tracking-widest uppercase text-white/40">
+                  Processing...
+                </span>
+              </div>
+            ) : resultUrl ? (
+              <img
+                src={resultUrl}
+                alt="Anonymized"
+                className="max-h-[55vh] max-w-full object-contain"
+              />
+            ) : (
+              <span className="text-xs tracking-widest uppercase text-white/20">
+                Click "Process Image" to anonymize
+              </span>
+            )}
+          </div>
+        </div>
       </div>
     );
   }
