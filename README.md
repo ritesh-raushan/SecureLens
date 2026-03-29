@@ -46,10 +46,7 @@ Activate the virtual environment:
   ```cmd
   venv\Scripts\activate
   ```
-- **Windows (PowerShell):**
-  ```powershell
-  .\venv\Scripts\Activate.ps1
-  ```
+
 - **macOS / Linux:**
   ```bash
   source venv/bin/activate
@@ -64,15 +61,7 @@ uvicorn main:app --reload
 
 Wait until you see `Uvicorn running on http://127.0.0.1:8000`. On the first run, YOLOv8n model weights (~6 MB) are downloaded automatically.
 
-Verify the server is running:
 
-```bash
-curl http://localhost:8000/health
-```
-
-Expected output: `{"status":"ok"}`
-
-> **Note (Windows PowerShell):** Use `curl.exe` instead of `curl` for all cURL commands. PowerShell aliases `curl` to a different command.
 
 ### Step 3 — Start the Frontend (Terminal 2)
 
